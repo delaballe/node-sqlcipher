@@ -1,5 +1,5 @@
 {
-  "includes": [ "deps/common-sqlcipher.gypi" ],
+  "includes": [ "deps/common-sqlite.gypi" ],
   "variables": {
       "sqlite%":"internal",
       "module_name":"node_sqlcipher",
@@ -19,7 +19,7 @@
         },
         {
             "dependencies": [
-              "deps/sqlcipher.gyp:sqlcipher"
+              "deps/sqlite3.gyp:sqlite3"
             ]
         }
         ]

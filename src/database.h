@@ -6,7 +6,8 @@
 #include <string>
 #include <queue>
 
-#include "../include/sqlcipher/sqlite3.h"
+//#include "../include/sqlcipher/sqlite3.h"
+#include <sqlite3.h>
 #include "async.h"
 
 using namespace v8;
@@ -64,8 +65,8 @@ public:
     struct LoadExtensionBaton : Baton {
         std::string filename;
         std::string password;
-        LoadExtensionBaton(Database* db_, Handle<Function> cb_, const char* filename_) :
-            Baton(db_, cb_), filename(filename_) {}
+        LoadExtensionBaton(Database* db_, Handle<Function> cb_, const char* filename_, const char* password_) :
+            Baton(db_, cb_), filename(filename_), password(password_) {}
     };
 
     typedef void (*Work_Callback)(Baton* baton);

@@ -12,7 +12,8 @@
 #include <queue>
 #include <vector>
 
-#include "../include/sqlcipher/sqlite3.h"
+//#include "../include/sqlcipher/sqlite3.h"
+#include <sqlite3.h>
 
 using namespace v8;
 using namespace node;

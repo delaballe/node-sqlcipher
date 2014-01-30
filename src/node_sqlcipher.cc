@@ -5,7 +5,8 @@
 #include <sstream>
 #include <cstring>
 #include <string>
-#include "../include/sqlcipher/sqlite3.h"
+//#include "../include/sqlcipher/sqlite3.h"
+#include <sqlite3.h>
 
 #include "macros.h"
 #include "database.h"

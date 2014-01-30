@@ -5,6 +5,7 @@
 #include "database.h"
 #include "statement.h"
 
+using namespace std;
 using namespace node_sqlcipher;
 
 Persistent<FunctionTemplate> Database::constructor_template;
@@ -148,13 +149,18 @@ void Database::Work_BeginOpen(Baton* baton) {
 void Database::Work_Open(uv_work_t* req) {
     OpenBaton* baton = static_cast<OpenBaton*>(req->data);
     Database* db = baton->db;
+	  //sqlite3_key(baton->db, baton->password.c_str(), baton->password.length()); 
     baton->status = sqlite3_open_v2(
         baton->filename.c_str(),
         &db->handle,
         baton->mode,
         NULL
     );
+		sqlite3_key_v2(db->handle, baton->filename.c_str(), baton->password.c_str(), baton->password.length());
+		//baton->status = sqlite3_open(baton->filename.c_str(), &db->handle);
+    //sqlite3_key(db, baton->password.c_str(), baton->password.length());
 
+		
     if (baton->status != SQLITE_OK) {
         baton->message = std::string(sqlite3_errmsg(db->handle));
         sqlite3_close(db->handle);
@@ -587,9 +593,10 @@ Handle<Value> Database::LoadExtension(const Arguments& args) {
     Database* db = ObjectWrap::Unwrap<Database>(args.This());
 
     REQUIRE_ARGUMENT_STRING(0, filename);
-    OPTIONAL_ARGUMENT_FUNCTION(1, callback);
+    REQUIRE_ARGUMENT_STRING(1, password);
+    OPTIONAL_ARGUMENT_FUNCTION(2, callback);
 
-    Baton* baton = new LoadExtensionBaton(db, callback, *filename);
+    Baton* baton = new LoadExtensionBaton(db, callback, *filename, *password);
     db->Schedule(Work_BeginLoadExtension, baton, true);
 
     return args.This();

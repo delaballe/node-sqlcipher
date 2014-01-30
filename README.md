@@ -26,9 +26,11 @@ db.serialize(function() {
 db.close();
 ```
 
-This is in early stage
-----------------------
-Currently not working !! 
------------------------
-But Coming soon 
----------------
+This is in early stage but it works !!
+-------------------------------------
+
+Currently you need to have libsqlcipher.so.0.8.6 compiled and installed in your system library path !!
+
+Will be fixed soon
+
+
