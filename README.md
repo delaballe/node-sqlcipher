@@ -1,6 +1,6 @@
 # NAME
 
-node-sqlicipher - Asynchronous, non-blocking [SQLcipher](http://sqlcipher.net//) bindings for [Node.js](http://nodejs.org/) 0.2-0.4 (versions 2.0.x), **0.6.13+, 0.8.x, and 0.10.x** (versions 2.1.x). it's a fork of [node-sqlite3](https://github.com/mapbox/node-sqlite3) with sqlcipher library 
+node-sqlicipher - Asynchronous, non-blocking [SQLite3](http://www.sqlite.org/) + [SQLcipher](http://sqlcipher.net//) bindings for [Node.js](http://nodejs.org/) 0.2-0.4 (versions 2.0.x), **0.6.13+, 0.8.x, and 0.10.x** (versions 2.1.x). it's a fork of [node-sqlite3](https://github.com/mapbox/node-sqlite3) with sqlcipher library 
 
 
 # USAGE

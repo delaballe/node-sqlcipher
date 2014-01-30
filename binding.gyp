@@ -1,5 +1,5 @@
 {
-  "includes": [ "deps/common-sqlite.gypi" ],
+  "includes": [ "deps/common-sqlcipher.gypi" ],
   "variables": {
       "sqlite%":"internal",
       "module_name":"node_sqlcipher",
@@ -12,15 +12,14 @@
         ["sqlite != 'internal'", {
             "libraries": [
                "-L<@(sqlite)/lib",
-               "-lsqlite3",
-							 "/root/nw-sqlcipher/node_modules/node-sqlcipher/lib/libsqlcipher.so.0.8.6"
+               "-lsqlite3"
             ],
             "include_dirs": [ "<@(sqlite)/include" ],
             "conditions": [ [ "OS=='linux'", {"libraries+":["-Wl,-rpath=<@(sqlite)/lib"]} ] ]
         },
         {
             "dependencies": [
-              "deps/sqlite3.gyp:sqlite3"
+              "deps/sqlcipher.gyp:sqlcipher"
             ]
         }
         ]
